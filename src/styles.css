@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0px;
+    font-family: cursive;
+}
+h1{
+    font-size: 28px;
+    padding: 15px;
+    text-align: center;
+}
+.text-center{
+    text-align: center;
+}
+.user-table{
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid #d2cfcf;
+}
+.user-table tbody tr:nth-child(odd){
+    background: #efefef;
+} 
+.user-table tbody tr:nth-child(even){
+    background:#d6d6d6;
+} 
+.user-table thead tr th{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.user-table tbody tr td{
+    padding: 6px;
+}
+.user-table tbody tr td:last-child{
+    text-align: center;
+}
+.user-table thead tr{
+        background: #000 !important;
+        color: #fff;
+        text-align: center;
+}
+.btn{
+    width: 80px;
+    padding: 7px 5px;
+    border-radius: 45px;
+    border: none;
+    background: #696969;
+    color: #fff;
+    margin-left: 8px;
+    border: 1px solid #696969;
+    transition: 0.25s ease all;
+    
+}
+.btn:hover{
+    border-color: #000000;
+}
+.btn[disabled]{
+    opacity: 0.5;
+}
+.btn.add-user{
+    margin: 20px auto;
+    width: 30%;
+    padding: 10px;
+}
+
+.add-user-form{
+    width: 50%;
+    margin: 25px auto;
+    padding: 5px 15px 30px;
+    box-shadow: 0px 0px 5px grey;
+    border-radius: 5px;
+}
+.add-user-form .form-control{
+    width: 55%;
+    display: inline-block;
+    padding-bottom: 25px;
+    
+}
+.add-user-form .form-control input{
+    width: 100%;
+    border: 1px solid gainsboro;
+    padding: 8px;
+    border-radius: 4px;
+    font-size:16px;
+}
+.model-header{
+    background: #d8d8d8;
+    height: 55px;
+    padding-top: 15px;
+}
+.model-header .btn{
+            width: 100px;
+            padding: 12px 7px;
+        }

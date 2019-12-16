@@ -1,0 +1,32 @@
+<ng-container *ngIf="(userData$ | async) as allUsers">
+    <section *ngIf="allUsers.length > 0">
+    <h1>All User List</h1>
+    <table class="table table-striped user-table">
+        <thead class="thead-dark"> 
+            <tr>
+                <th>S.no</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>contact</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of allUsers; index as i" data-aos="fade-in">
+                <td>{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.contact}}</td>
+                <td>
+                    <button class="btn btn-primary" [routerLink]="(['/users/add-user', item.id])">Edit</button>
+                    <button class="btn btn-primary" (click)="onDelete(item)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+    <h1 *ngIf="allUsers.length === 0">No detail Found...</h1>
+    <div class="text-center">
+    <button class="btn add-user" [routerLink]="['add-user']">Add New User</button>
+    </div>
+</ng-container>
