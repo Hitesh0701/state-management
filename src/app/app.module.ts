@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersModule } from './users/users.module';
 import { SharedService } from './services/shared.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { AuthModule } from './auth/auth.module';
+import { IOOperationModule } from './io-operation/io-operation.module';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +18,10 @@ import { SharedService } from './services/shared.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UsersModule
+    UsersModule,
+    AuthModule,
+    IOOperationModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

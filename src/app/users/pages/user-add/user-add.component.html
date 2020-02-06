@@ -1,17 +1,25 @@
 <section class="add-user-form text-center">
-  <h1>Add New User</h1>
+  <h1>
+    {{ idOfItemToEdit ? 'Update Detail Of' : 'Add New'}} User</h1>
   <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
       <div class="form-control">
           <input type="text" placeholder="Name" formControlName="name"> 
+          <span *ngIf="addUserForm.controls.name.invalid && (addUserForm.controls.name.dirty || addUserForm.controls.name.touched) && isSubmitted">
+              Invalid
+          </span> 
       </div>
       <div class="form-control">
-          <input type="email" placeholder="Email" formControlName="email"> 
+          <input type="email" placeholder="Email" formControlName="email">
       </div>
       <div class="form-control">
           <input type="text" placeholder="Contact" formControlName="contact"> 
       </div>
       <div class="btn-outer">
-          <button type="submit" class="btn add-user" [disabled]= !addUserForm.valid>Submit</button>
+          <button type="submit" class="btn add-user">Submit</button>
       </div>
   </form>
 </section>
+
+<!--<div class="sc__wrapper">
+        <div id="js--sc--container"></div>
+    </div> -->

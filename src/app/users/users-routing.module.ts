@@ -10,7 +10,7 @@ const routes: Routes = [
     component: UsersLayoutComponent,
     children: [
       {
-        path: '',
+        path: 'user-list',
         component: UserListComponent
       },
       {

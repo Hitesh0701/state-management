@@ -1,0 +1,26 @@
+<section class="add-user-form text-center">
+  <h1>Login</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+          <input type="email" placeholder="Email" formControlName="email" [class.invalid]="loginForm.controls.email.invalid && formSubmitted">
+          <div *ngIf="loginForm.controls.email.invalid && formSubmitted" class="error-msg">
+            <p *ngIf="loginForm.controls.email.hasError('required') && !loginForm.controls.email.hasError('email')">Email required</p>
+            <p *ngIf="!loginForm.controls.email.hasError('required') && loginForm.controls.email.hasError('email')">Email invalid</p>
+          </div>
+      </div>
+      <div class="form-control">
+          <input type="text" placeholder="Password" formControlName="password" [class.invalid]="loginForm.controls.password.invalid && formSubmitted">
+          <div *ngIf="loginForm.controls.password.invalid && formSubmitted" class="error-msg">
+            <p *ngIf="loginForm.controls.password.hasError('required') && !loginForm.controls.password.hasError('minLength')">Password required</p>
+            <p *ngIf="!loginForm.controls.password.hasError('required') && loginForm.controls.password.hasError('minlength')">Length should be 6</p>
+          </div> 
+      </div>
+      <div class="btn-outer">
+          <button type="submit" class="btn btn-primary add-user">Submit</button>
+      </div>
+      <div class="btn-outer forgot">Forgot password</div>
+  </form>
+</section>
+<div class="text-center">
+  <button class="btn add-user" [routerLink]="['../signup']">New User Sign Up !</button>
+</div>

@@ -1,0 +1,31 @@
+<section class="add-user-form text-center">
+  <h1>Sign Up</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="form-control">
+        <input type="text" placeholder="Name" formControlName="name" [class.invalid]="signupForm.controls.name.invalid && formSubmitted">
+        <div *ngIf="signupForm.controls.name.invalid && formSubmitted" class="error-msg">
+          <p>Name required</p>
+        </div>  
+      </div>    
+      <div class="form-control">
+          <input type="email" placeholder="Email" formControlName="email" [class.invalid]="signupForm.controls.email.invalid && formSubmitted">
+          <div *ngIf="signupForm.controls.email.invalid && formSubmitted" class="error-msg">
+            <p *ngIf="signupForm.controls.email.hasError('required') && !signupForm.controls.email.hasError('email')">Email required</p>
+            <p *ngIf="!signupForm.controls.email.hasError('required') && signupForm.controls.email.hasError('email')">Email invalid</p>
+          </div>
+      </div>
+      <div class="form-control">
+          <input type="text" placeholder="Password" formControlName="password" [class.invalid]="signupForm.controls.password.invalid && formSubmitted">
+          <div *ngIf="signupForm.controls.password.invalid && formSubmitted" class="error-msg">
+            <p *ngIf="signupForm.controls.password.hasError('required') && !signupForm.controls.password.hasError('minLength')">Password required</p>
+            <p *ngIf="!signupForm.controls.password.hasError('required') && signupForm.controls.password.hasError('minlength')">Length should be 6</p>
+          </div> 
+      </div>
+      <div class="btn-outer">
+          <button type="submit" class="btn btn-primary add-user">Submit</button>
+      </div>
+  </form>
+</section>
+<div class="text-center">
+  <button class="btn add-user" [routerLink]="['']">Existing user Login !</button>
+</div>

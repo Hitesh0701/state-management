@@ -90,4 +90,25 @@ h1{
 .model-header .btn{
             width: 100px;
             padding: 12px 7px;
-        }
+}
+
+/* validdation Msg css */
+.form-control .invalid{
+    border-color: red;
+}
+.form-control .error-msg p{
+    color: red;
+    margin: 0px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.forgot{
+    opacity: 0.75;
+    font-family: sans-serif;
+    transition: 0.25s ease all;
+    cursor: pointer;
+}
+.forgot:hover{
+    opacity: 1;
+}

@@ -17,10 +17,4 @@ export class SharedService {
   updateUserData(data){
     this._usersDataSource.next(data);
   }
-  deleteUser(data){
-    this._usersDataSource.next(data);
-  }
-  getEditUser(data){
-    return this._usersDataSource.getValue();
-  }
 }

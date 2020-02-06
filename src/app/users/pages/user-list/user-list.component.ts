@@ -20,7 +20,6 @@ export class UserListComponent implements OnInit {
       this.populateData();
     }
     this.userData$ = this._sharedService.userData$;
-
   }
 
   onDelete(index){
@@ -28,7 +27,7 @@ export class UserListComponent implements OnInit {
     {
         const currentListOfUsers = this._sharedService.getStateSnapshot();
         currentListOfUsers.splice(index, 1);
-        this._sharedService.deleteUser(currentListOfUsers);
+        this._sharedService.updateUserData(currentListOfUsers);
         alert("User deleted successfully !")
       }
   }

@@ -1,0 +1,5 @@
+<h3>Parent Components</h3>
+<button type="button" (click)="sendToChild(data)">Sent to Child</button>
+<h4><span>Child's Message   :    </span>{{messageToReceive}}</h4>
+
+<app-child [messageFromParent]="messageToSend" (messageForParent)="receiveMessage($event)"></app-child>

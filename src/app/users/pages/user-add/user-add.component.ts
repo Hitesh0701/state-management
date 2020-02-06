@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ScratchCard, SCRATCH_TYPE } from 'scratchcard-js'
 
 @Component({
   selector: 'app-user-add',
@@ -9,12 +10,15 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-add.component.css']
 })
 export class UserAddComponent implements OnInit {
+  [x: string]: any;
 
   addUserForm: FormGroup;
   route: any;
   idOfItemToEdit: any;
   fetchUser: any;
   userToEdit: any;
+  isSubmitted: boolean;
+  index:any;
   constructor(private _sharedService: SharedService,
      private router: Router,
      private activeRoute: ActivatedRoute) {
@@ -35,23 +39,20 @@ export class UserAddComponent implements OnInit {
     // if(this.idOfItemToEdit){
     //   this.patchUserById(this.idOfItemToEdit);
     // }
-    this.router.navigate(['/users'])
+    // this.router.navigate(['/users/user-list'])
   } else {
     if(this.idOfItemToEdit){
       this.patchUserById(this.idOfItemToEdit);
     }
   }
-
+  
 }
 
-  patchUserById(id){
-    console.log(id);
-    // get current state
-    const ALL_USERS = this._sharedService.getStateSnapshot();
-    console.log(ALL_USERS);
-    const ITEM_TO_EDIT = ALL_USERS.find(item => item.id === +id);
-    console.log(ITEM_TO_EDIT)
-    this.addUserForm.patchValue(ITEM_TO_EDIT);
+patchUserById(id){
+  // get current state
+  const ALL_USERS = this._sharedService.getStateSnapshot();
+  const ITEM_TO_EDIT = ALL_USERS.find(item => item.id === +id);
+  this.addUserForm.patchValue(ITEM_TO_EDIT);
   }
 
   populateData(){
@@ -67,18 +68,30 @@ export class UserAddComponent implements OnInit {
   }
 
   onSubmit(){
+    if(this.idOfItemToEdit){
+      // get all current values
+      const currentListOfUsers = this._sharedService.getStateSnapshot();
+      const indexToEdit = currentListOfUsers.findIndex(item => item.id === +this.idOfItemToEdit);
+      currentListOfUsers[indexToEdit] = this.addUserForm.value;
+      this._sharedService.updateUserData(currentListOfUsers);
+      this.addUserForm.reset();
+      this.router.navigate(['/users/user-list']);
+    }
+    else{
       if(this.addUserForm.valid){
+        // get all current values
         const currentListOfUsers = this._sharedService.getStateSnapshot();
-
+        // get random id for new user
         this.addUserForm.controls.id.setValue(Math.floor(Math.random()*10) + 1);
         currentListOfUsers.push(this.addUserForm.value);
         this._sharedService.updateUserData(currentListOfUsers);
         this.addUserForm.reset();
-        // alert("New user added successfully !")
-        this.router.navigate(['/users']);
+        this.router.navigate(['/users/user-list']);
       } 
       else {
+        this.isSubmitted = true;
         alert('Please fill all details');
       }
     }
+  }
 }
