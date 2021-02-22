@@ -9,8 +9,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AuthModule } from './auth/auth.module';
 import { IOOperationModule } from './io-operation/io-operation.module';
-
-
 @NgModule({
   declarations: [
     AppComponent

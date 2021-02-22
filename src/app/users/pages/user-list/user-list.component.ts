@@ -41,7 +41,19 @@ export class UserListComponent implements OnInit {
     const ALL_USERS = [
       {
         id: 1,
-        name: 'Aditya',
+        name: 'Ad',
+        email: 'ad@gmail.com',
+        contact: '8447478305'
+      },
+      {
+        id: 2,
+        name: 'Add',
+        email: 'ad@gmail.com',
+        contact: '8447478305'
+      },
+      {
+        id: 3,
+        name: 'Addds',
         email: 'ad@gmail.com',
         contact: '8447478305'
       }

@@ -15,6 +15,7 @@ h1{
     width: 60%;
     margin: 0 auto;
     border: 1px solid #d2cfcf;
+    margin-top: 40px;
 }
 .user-table tbody tr:nth-child(odd){
     background: #efefef;

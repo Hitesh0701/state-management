@@ -7,9 +7,10 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersLayoutComponent } from './users-layout/users-layout.component';
 import { UserAddComponent } from './pages/user-add/user-add.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { FilterPipe } from '../filter.pipe';
 
 @NgModule({
-  declarations: [UsersLayoutComponent, UserAddComponent, UserListComponent],
+  declarations: [UsersLayoutComponent, UserAddComponent, UserListComponent, FilterPipe],
   imports: [
     CommonModule,
     UsersRoutingModule,
