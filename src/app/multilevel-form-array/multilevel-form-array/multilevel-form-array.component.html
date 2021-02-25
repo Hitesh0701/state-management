@@ -1,0 +1,37 @@
+<section class="add-user-form add-ques-form text-center">
+  <h1>
+    Add Questions
+  </h1>
+  <form [formGroup]="addQuestionsForm" (ngSubmit)="onSubmit()" class="text-left">
+    <ng-container formArrayName="questions">
+      <div class="modifier-product-outer mb-3" *ngFor="let question of questions().controls; let i=index" [formGroupName]="i">
+          <div class="form-group custom-form-control">
+              <label class="key">Que. {{i+1}}</label>
+              <div>
+                 <input class="form-control" type="text" id="question" formControlName="ques" name="ques" placeholder="Enter Question"/>
+              </div>
+          </div>
+          <ng-container formArrayName="options">
+              <div class="row">
+                  <div class="modifier-product-outer col-md-6" *ngFor="let option of options(i).controls; let optionIndex=index" [formGroupName]="optionIndex">
+                      <div class="form-group custom-form-control">
+                          <label class="key">Option {{optionIndex+1}}</label>
+                          <div class="d-flex">
+                              <input class="form-control" type="text" id="question" formControlName="option" name="option" placeholder="Enter Option"/>
+                              <button type="button" (click)="removeOption(i)" class="btn ml-2 icon-btn" *ngIf="optionIndex != (options(i).controls.length-1) && options(i).controls.length > 2"><i class="fa fa-minus"></i></button>
+                              <button type="button" (click)="addOption(i)" class="btn ml-2 icon-btn" *ngIf="optionIndex == (options(i).controls.length-1)"><i class="fa fa-plus"></i></button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </ng-container>  
+      </div>
+      <div class="text-right my-3">
+          <button type="button" (click)="addQuestion()" class="btn">Add</button>
+      </div>
+    </ng-container> 
+    <div class="btn-outer mt-5 text-center">
+        <button type="submit" class="btn add-user">Submit</button>
+    </div>
+  </form>
+</section>

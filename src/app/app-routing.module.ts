@@ -37,7 +37,11 @@ const routes: Routes = [
   {
     path:'io-operation',
     component: ParentComponent
-  }
+  },
+  {
+    path: 'multi-level-form-array',
+    loadChildren: () => import('./multilevel-form-array/multilevel-form-array.module').then(m => m.MultilevelFormArrayModule)
+  }  
 ];
 
 @NgModule({
